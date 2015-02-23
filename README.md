@@ -28,7 +28,7 @@ java -cp ../lib/hsqldb.jar org.hsqldb.Server -database.0 file:empmaint -dbname.0
 
 In browser navigate to localhost:8080/mybatis-cdi-zk-1.0
 
-**What I need help with***
+**What I need help with**
 
 Since I'm new to using CDI here are some questions/concerns...
 
