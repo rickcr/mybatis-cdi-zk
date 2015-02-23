@@ -6,6 +6,7 @@ import net.learntechnology.empmaint.services.DepartmentService;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.exporter.ZipExporter;
 import org.jboss.shrinkwrap.api.importer.ZipImporter;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
@@ -26,7 +27,7 @@ public class DepartmentIntegrationIT extends BaseIntegrationIT {
 	 */
 	@Deployment
 	public static WebArchive createDeployment() {
-		return ShrinkWrap.create(ZipImporter.class, "mybatis-cdi-zk-1.0.war").importFrom(new File("target/mybatis-cdi-zk-1.0.war"))
+		WebArchive archive = ShrinkWrap.create(ZipImporter.class, "mybatis-cdi-zk-1.0.war").importFrom(new File("target/mybatis-cdi-zk-1.0.war"))
 		            .as(WebArchive.class);
 //
 //
@@ -47,10 +48,10 @@ public class DepartmentIntegrationIT extends BaseIntegrationIT {
 //			.addAsWebInfResource(new File("src/main/webapp/WEB-INF/web.xml"))
 //			.addAsWebInfResource(new File("src/main/webapp/WEB-INF/zk.xml"))
 //			;
-//		System.out.println("Archive = "+archive.toString(true));
-//		archive.as(ZipExporter.class).exportTo(
-//		    new File("/Users/rick/projects/mybatis-cdi-zk/temp/departmentTest.zip"), true);
-//		return archive;
+		System.out.println("Archive = "+archive.toString(true));
+		archive.as(ZipExporter.class).exportTo(
+		    new File("/Users/rick/projects/mybatis-cdi-zk/temp/departmentTest.zip"), true);
+		return archive;
 	}
 
 	@Inject
