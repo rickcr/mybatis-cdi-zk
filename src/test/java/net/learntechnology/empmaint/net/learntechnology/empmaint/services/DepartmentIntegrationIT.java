@@ -1,15 +1,12 @@
 package net.learntechnology.empmaint.net.learntechnology.empmaint.services;
 
 import net.learntechnology.empmaint.BaseIntegrationIT;
-import net.learntechnology.empmaint.SqlSessionFactoryProvider;
-import net.learntechnology.empmaint.domain.BaseVO;
 import net.learntechnology.empmaint.domain.Department;
-import net.learntechnology.empmaint.mapper.DepartmentMapper;
 import net.learntechnology.empmaint.services.DepartmentService;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.exporter.ZipExporter;
+import org.jboss.shrinkwrap.api.importer.ZipImporter;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Test;
@@ -29,27 +26,31 @@ public class DepartmentIntegrationIT extends BaseIntegrationIT {
 	 */
 	@Deployment
 	public static WebArchive createDeployment() {
-		WebArchive archive = ShrinkWrap.create(WebArchive.class)
-			.addClass(SqlSessionFactoryProvider.class)
-			.addClass(BaseIntegrationIT.class)
-			.addClass(DepartmentIntegrationIT.class)
-			.addClass(BaseVO.class)
-			.addClass(Department.class)
-			.addClass(DepartmentService.class)
-			.addClass(DepartmentMapper.class)
-			.addAsManifestResource(new File("src/main/webapp/META-INF/context.xml"))
-			.addAsResource("mybatis-config.xml")
-			.addAsResource("net/learntechnology/empmaint/mapper/DepartmentMapper.xml")
-			.addAsResource("mybatis-config.properties")
-			.addAsResource("logback-test.xml")
-			.addAsWebInfResource(new File("src/main/webapp/WEB-INF/beans.xml"))
-			.addAsWebInfResource(new File("src/main/webapp/WEB-INF/web.xml"))
-			.addAsWebInfResource(new File("src/main/webapp/WEB-INF/zk.xml"))
-			;
-		System.out.println("Archive = "+archive.toString(true));
-		archive.as(ZipExporter.class).exportTo(
-		    new File("/Users/rick/projects/mybatis-cdi-zk/temp/departmentTest.zip"), true);
-		return archive;
+		return ShrinkWrap.create(ZipImporter.class, "mybatis-cdi-zk-1.0.war").importFrom(new File("target/mybatis-cdi-zk-1.0.war"))
+		            .as(WebArchive.class);
+//
+//
+//		WebArchive archive = ShrinkWrap.create(WebArchive.class)
+//			.addClass(SqlSessionFactoryProvider.class)
+//			.addClass(BaseIntegrationIT.class)
+//			.addClass(DepartmentIntegrationIT.class)
+//			.addClass(BaseVO.class)
+//			.addClass(Department.class)
+//			.addClass(DepartmentService.class)
+//			.addClass(DepartmentMapper.class)
+//			.addAsManifestResource(new File("src/main/webapp/META-INF/context.xml"))
+//			.addAsResource("mybatis-config.xml")
+//			.addAsResource("net/learntechnology/empmaint/mapper/DepartmentMapper.xml")
+//			.addAsResource("mybatis-config.properties")
+//			.addAsResource("logback-test.xml")
+//			.addAsWebInfResource(new File("src/main/webapp/WEB-INF/beans.xml"))
+//			.addAsWebInfResource(new File("src/main/webapp/WEB-INF/web.xml"))
+//			.addAsWebInfResource(new File("src/main/webapp/WEB-INF/zk.xml"))
+//			;
+//		System.out.println("Archive = "+archive.toString(true));
+//		archive.as(ZipExporter.class).exportTo(
+//		    new File("/Users/rick/projects/mybatis-cdi-zk/temp/departmentTest.zip"), true);
+//		return archive;
 	}
 
 	@Inject
