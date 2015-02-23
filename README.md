@@ -3,7 +3,10 @@ mybatis-cdi-zk
 
 Sample BETA application demonstrating integration of MyBatis, CDI, and ZK
 
-It works but I'm calling it Beta since I'm unclear about a few things and I would like to get some integration testing working (Arquillian?)
+It works but I'm calling it Beta since I'm unclear about a few things and I would like to get some integration testing working (Arquillian?) [See notes at bottom.]
+
+Note, this is in all-in-one war. The MyBatis persistence layer is simply bundled up as class files in your webapps's classes. I'll be working on a multi-module project
+next, which bundles the persistence layer (MyBatis) as a jar inside the war.
 
 **To build:**<br/>
 Requires maven<br/>
@@ -24,13 +27,14 @@ Download HSQLDB from here http://sourceforge.net/projects/hsqldb/files/hsqldb/ a
 Copy the empmaint.script file from src/main/resources into your {hsqldb-dir}/data/ directory
 
 From the {hsqldb-dir}/data/ directory run the following command to start up the hsqldb instance for our employee maintenance app
+
 java -cp ../lib/hsqldb.jar org.hsqldb.Server -database.0 file:empmaint -dbname.0 empdb
 
-In browser navigate to localhost:8080/mybatis-cdi-zk-1.0
+In browser navigate to http://localhost:8080/mybatis-cdi-zk-1.0
 
 **What I need help with**
 
-Since I'm new to using CDI here are some questions/concerns...
+Since I'm new to using CDI here are some questions/concerns. Would love some help with these. Email to rickcr@gmail.com Thanks!
 
 1) You're supposed to be able to add a weld:scan section in beans.xml but when I do, I get start up errors? It works without it,
 but I'd like it to only scan what it needs so I'd prefer to add the weld:scan section if I could.
@@ -48,6 +52,9 @@ I posted about it here posted about it here on stackoverlfow
 http://stackoverflow.com/questions/28622091/upgrading-my-weld-servlet-dependency-from-1-1-to-2-2-9-common-error-shows-up
 
 3) Why do some examples also have a beans.xml in resources/META-INF/ along with WEB-INF/ ?
+
+4) Can not get an Integration test (DepartmentIntegrationIT) working with Arquillian. Any help much appreciated. Posted for some help here https://developer.jboss.org/message/919605
+
 
 
 
