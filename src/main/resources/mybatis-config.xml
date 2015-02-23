@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="mybatis-config.properties"/>
+
+	<typeAliases>
+		<typeAlias alias="Employee" type="net.learntechnology.empmaint.domain.Employee"/>
+		<typeAlias alias="Department" type="net.learntechnology.empmaint.domain.Department"/>
+	</typeAliases>
+
+    <environments default="${mybatis.db.env}">
+        <environment id="dev">
+			<transactionManager type="JDBC"/>
+
+			<!--<dataSource type="JNDI">-->
+				<!--<property name="data_source" value="java:/comp/env/jdbc/employees"/>-->
+			<!--</dataSource>-->
+			<dataSource type = "UNPOOLED">
+				<property value="${dev.db.driver}" name="driver"/>
+				<property value="${dev.db.url}" name="url"/>
+				<property value="${dev.db.username}" name="username"/>
+				<property value="${dev.db.password}" name="password"/>
+			</dataSource>
+
+        </environment>
+
+		<environment id="qa">
+			<transactionManager type="JDBC"/>
+			<dataSource type = "UNPOOLED">
+				<property value="${qa.db.driver}" name="driver"/>
+				<property value="${qa.db.url}" name="url"/>
+				<property value="${qa.db.username}" name="username"/>
+				<property value="${qa.db.password}" name="password"/>
+			</dataSource>
+
+		</environment>
+    </environments>
+
+    <mappers>
+         <package name="net.learntechnology.empmaint.mapper"/>
+    </mappers>
+</configuration>
