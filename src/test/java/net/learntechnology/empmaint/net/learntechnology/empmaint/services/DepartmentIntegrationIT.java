@@ -31,13 +31,20 @@ public class DepartmentIntegrationIT extends BaseIntegrationIT {
 	public static WebArchive createDeployment() {
 		WebArchive archive = ShrinkWrap.create(WebArchive.class)
 			.addClass(SqlSessionFactoryProvider.class)
+			.addClass(BaseIntegrationIT.class)
+			.addClass(DepartmentIntegrationIT.class)
 			.addClass(BaseVO.class)
 			.addClass(Department.class)
 			.addClass(DepartmentService.class)
 			.addClass(DepartmentMapper.class)
-			.addAsManifestResource(new File("src/main/webapp//META-INF/context.xml"))
-			.addAsResource("mybatis-config.xml").addAsResource("mybatis-config.properties")
+			.addAsManifestResource(new File("src/main/webapp/META-INF/context.xml"))
+			.addAsResource("mybatis-config.xml")
+			.addAsResource("net/learntechnology/empmaint/mapper/DepartmentMapper.xml")
+			.addAsResource("mybatis-config.properties")
+			.addAsResource("logback-test.xml")
 			.addAsWebInfResource(new File("src/main/webapp/WEB-INF/beans.xml"))
+			.addAsWebInfResource(new File("src/main/webapp/WEB-INF/web.xml"))
+			.addAsWebInfResource(new File("src/main/webapp/WEB-INF/zk.xml"))
 			;
 		System.out.println("Archive = "+archive.toString(true));
 		archive.as(ZipExporter.class).exportTo(
