@@ -18,15 +18,15 @@ The war file can be deployed to Tomcat7 or JBoss6.
 When I used Spring I was able to set up a nice 'in memory' version of HSQLDB, but doubt it's possible with vanilla CDI stuff (although maybe with Maven?)
 So for now, you'll have to setup HSQLDB and run it locally first before the app will work.
 
-#Download HSQLDB from here http://sourceforge.net/projects/hsqldb/files/hsqldb/ and unzip to your directory of choice.
+Download HSQLDB from here http://sourceforge.net/projects/hsqldb/files/hsqldb/ and unzip to your directory of choice.
 (Be sure to get the version that you are using in the pom.xml (At the time of this writing it's 2.3.2)
 
-#Copy the empmaint.script file from src/main/resources into your {hsqldb-dir}/data/ directory
+Copy the empmaint.script file from src/main/resources into your {hsqldb-dir}/data/ directory
 
-#From the {hsqldb-dir}/data/ directory run the following command to start up the hsqldb instance for our employee maintenance app
+From the {hsqldb-dir}/data/ directory run the following command to start up the hsqldb instance for our employee maintenance app
 java -cp ../lib/hsqldb.jar org.hsqldb.Server -database.0 file:empmaint -dbname.0 empdb
 
-#In browser navigate to localhost:8080/mybatis-cdi-zk-1.0
+In browser navigate to localhost:8080/mybatis-cdi-zk-1.0
 
 **What I need help with***
 
