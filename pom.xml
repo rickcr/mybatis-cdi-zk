@@ -195,7 +195,13 @@
 			<version>2.3.2</version>
 		</dependency>
 
-		<!-- testing -->
+		<!-- testing - note still haven't gotten the arquillian stuff to work -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
@@ -206,12 +212,6 @@
 			<artifactId>jboss-javaee-6.0</artifactId>
 			<version>1.0.0.Final</version>
 			<type>pom</type>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
