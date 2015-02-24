@@ -1,6 +1,5 @@
 package net.learntechnology.empmaint.net.learntechnology.empmaint.services;
 
-import net.learntechnology.empmaint.BaseIntegrationIT;
 import net.learntechnology.empmaint.domain.Department;
 import net.learntechnology.empmaint.services.DepartmentService;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -21,7 +20,7 @@ import java.io.File;
 import java.util.List;
 
 @RunWith(Arquillian.class)
-public class DepartmentIntegrationIT extends BaseIntegrationIT {
+public class DepartmentIntegrationIT  {
 	private final static Logger logger = LoggerFactory.getLogger(DepartmentIntegrationIT.class);
 
 	/* Still new to using arquillian. Following the help I'm getting here
